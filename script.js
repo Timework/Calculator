@@ -10,3 +10,19 @@ function multiply(first, second) {
 function divide(first, second) {
     return first/second
 }
+function operate(first, operator, second) {
+    switch (operator) {
+        case sum:
+            return sum(first, second)
+            break;
+        case subtract:
+            return subtract(first, second)
+            break;
+        case multiply:
+            return multiply(first, second)
+            break;
+        case divide:
+            return divide(first, second)
+            break;
+    }
+}
