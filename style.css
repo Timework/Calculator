@@ -1,0 +1,72 @@
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(6, 50px);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas: 
+    "display display display display"
+    "blank blank backspace clear"
+    "num7 num8 num9 divide"
+    "num4 num5 num6 multi"
+    "num1 num2 num3 minus"
+    "num0 deci equal plus";
+}
+.display{
+    grid-area: display;
+}
+#num0{
+    grid-area: num0;
+}
+#num1{
+    grid-area: num1;
+}
+#num2{
+    grid-area: num2;
+}
+#num3{
+    grid-area: num3;
+}
+#num4{
+    grid-area: num4;
+}
+#num5{
+    grid-area: num5;
+}
+#num6{
+    grid-area: num6;
+}
+#num7{
+    grid-area: num7;
+}
+#num8{
+    grid-area: num8;
+}
+#num9{
+    grid-area: num9;
+}
+#deci{
+    grid-area: deci;
+}
+#equal{
+    grid-area: equal;
+}
+#divide{
+    grid-area: divide;
+}
+#multi{
+    grid-area: multi;
+}
+#minus{
+    grid-area: minus;
+}
+#plus{
+    grid-area: plus;
+}
+#backspace{
+    grid-area: backspace;
+}
+#clear{
+    grid-area: clear;
+}
