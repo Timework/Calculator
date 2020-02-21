@@ -32,3 +32,11 @@ function numberAdd (button) {
     document.getElementById("display").innerHTML += x;
     calValue += x;
 }
+function numberClear () {
+    document.getElementById("display").innerHTML = "";
+    calValue = "";
+}
+function backspace () {
+    document.getElementById("display").innerHTML -= display;
+    calValue -= display[0];
+}
