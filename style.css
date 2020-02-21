@@ -13,8 +13,9 @@
     "num1 num2 num3 minus"
     "num0 deci equal plus";
 }
-.display{
+#display{
     grid-area: display;
+    text-align: right;
 }
 #num0{
     grid-area: num0;

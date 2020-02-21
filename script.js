@@ -26,3 +26,9 @@ function operate(first, operator, second) {
             break;
     }
 }
+var calValue = "";
+function numberAdd (button) {
+    var x = button.value;
+    document.getElementById("display").innerHTML += x;
+    calValue += x;
+}
