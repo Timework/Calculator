@@ -27,6 +27,7 @@ function operate(first, operator, second) {
     }
 }
 var calValue = "";
+
 function numberAdd (button) {
     var x = button.value;
     document.getElementById("display").innerHTML += x;
@@ -37,6 +38,6 @@ function numberClear () {
     calValue = "";
 }
 function backspace () {
-    document.getElementById("display").innerHTML -= display;
-    calValue -= display[0];
+    calValue = calValue.substring(0, calValue.length - 1);
+    document.getElementById("display").innerHTML = calValue;
 }
