@@ -10,24 +10,9 @@ function multiply(first, second) {
 function divide(first, second) {
     return first/second
 }
-function operate(first, operator, second) {
-    switch (operator) {
-        case sum:
-            return sum(first, second)
-            break;
-        case subtract:
-            return subtract(first, second)
-            break;
-        case multiply:
-            return multiply(first, second)
-            break;
-        case divide:
-            return divide(first, second)
-            break;
-    }
-}
-var calValue = "";
 
+var calValue = "";
+var calArr = [];
 function numberAdd (button) {
     var x = button.value;
     document.getElementById("display").innerHTML += x;
@@ -36,8 +21,52 @@ function numberAdd (button) {
 function numberClear () {
     document.getElementById("display").innerHTML = "";
     calValue = "";
+    calArr = [];
 }
 function backspace () {
     calValue = calValue.substring(0, calValue.length - 1);
     document.getElementById("display").innerHTML = calValue;
+}
+function holdValue (button) {
+     calArr.push(parseFloat(calValue));
+     calArr.push(button.value);
+    calValue = "";
+    document.getElementById("display").innerHTML = calValue;
+}
+function runOperate () {
+    calArr.push(parseFloat(calValue));
+    calculator(calArr);
+    document.getElementById("display").innerHTML = calArr;
+function calculator(calArr) {
+    for (let i = 0; i < calArr.length; i++){
+        if (calArr[i] === "multiply" || calArr[i] === "divide"){
+            if (calArr[i] === "multiply") {
+                calArr[i] = multiply(calArr[i-1], calArr[i+1]);
+                calArr.splice(i - 1, 1);
+                calArr.splice(i, 1);
+                i = -1;
+            }
+            if (calArr[i] === "divide"){
+                calArr[i] = divide(calArr[i-1], calArr[i + 1]);
+                calArr.splice(i - 1, 1);
+                calArr.splice(i, 1);
+                i = -1;
+            }
+        }}
+        for (let k = 0; k < calArr.length; k++){
+        if (calArr[k] === "sum" || calArr[k] === "subtract"){
+            if (calArr[k] === "sum"){
+                calArr[k] = sum(calArr[k - 1], calArr[k + 1]);
+                calArr.splice(k - 1, 1);
+                calArr.splice(k, 1);
+                k = -1;
+            }
+            if (calArr[k] === "subtract"){
+                calArr[k] = subtract(calArr[k - 1], calArr[k + 1]);
+                calArr.splice(k - 1, 1);
+                calArr.splice(k, 1);
+                k = -1;
+            }}
+        }
+    }
 }
