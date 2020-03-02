@@ -36,7 +36,9 @@ function holdValue (button) {
 function runOperate () {
     calArr.push(parseFloat(calValue));
     calculator(calArr);
-    document.getElementById("display").innerHTML = calArr;
+    calValue = calArr;
+    calArr = [];
+    document.getElementById("display").innerHTML = calValue;
 function calculator(calArr) {
     for (let i = 0; i < calArr.length; i++){
         if (calArr[i] === "multiply" || calArr[i] === "divide"){
@@ -79,3 +81,24 @@ if (document.getElementById("display").innerHTML.indexOf(".") != -1) {
     calValue += x;
  }
 }
+function keyAdd (num){
+    document.getElementById("display").innerHTML += num;
+    calValue += num;
+}
+document.addEventListener("keydown", function(event){
+    if(event.keyCode > 47 && event.keyCode < 58){
+        return keyAdd(parseInt(event.keyCode) - 48)
+    }
+    if(event.keyCode === 190){
+        return deciAdd(deci);
+    }
+    if (event.keyCode === 8) {
+        return backspace();
+    }
+    if (event.keyCode === 9) {
+        return numberClear();
+    }
+    if (event.keyCode === 16){
+         return runOperate();
+    }
+})
