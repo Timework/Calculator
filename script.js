@@ -70,3 +70,12 @@ function calculator(calArr) {
         }
     }
 }
+function deciAdd(button){
+if (document.getElementById("display").innerHTML.indexOf(".") != -1) {
+    return
+ } else {
+    var x = button.value;
+    document.getElementById("display").innerHTML += x;
+    calValue += x;
+ }
+}
