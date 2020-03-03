@@ -1,5 +1,9 @@
 
 #container{
+    border-style: solid;
+    margin: auto;
+    width: 335px;
+    background-image: linear-gradient(to right, blue, green);
     display: grid;
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: repeat(6, 50px);
@@ -14,8 +18,12 @@
     "num0 deci equal plus";
 }
 #display{
+    border-style: solid;
+    border-color: black;
     grid-area: display;
     text-align: right;
+    color: yellowgreen;
+    font-size: 40px;
 }
 #num0{
     grid-area: num0;
@@ -51,6 +59,7 @@
     grid-area: deci;
 }
 #equal{
+    background-color: blue;
     grid-area: equal;
 }
 #divi{
@@ -66,11 +75,29 @@
     grid-area: plus;
 }
 #backspace{
+    background-color: red;
     grid-area: backspace;
 }
 #clear{
+    background-color: red;
     grid-area: clear;
 }
 #setting{
+    width: 300px;
     text-align: center;
+    margin: 150px auto;
+}
+#instructions{
+    margin-top: 100px;
+}
+body{
+    background-image: linear-gradient(to left, blue, green);
+}
+button{
+    background-color: brown;
+    color: yellowgreen;
+    font-size: 13px;
+}
+#instructions{
+    color: white;
 }
