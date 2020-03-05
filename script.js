@@ -46,12 +46,12 @@ function calculator(calArr) {
                 calArr[i] = calArr[i - 1] * calArr[i + 1];
                 calArr.splice(i - 1, 1);
                 calArr.splice(i, 1);
-                i = -1
+                i -= 2;
             } else {
                 calArr[i] = calArr[i - 1] / calArr[i + 1];
                 calArr.splice(i - 1, 1);
                 calArr.splice(i, 1);
-                i = -1
+                i -= 2;
             }
         }
     }
@@ -62,12 +62,12 @@ function calculator(calArr) {
                 calArr[k] = calArr[k - 1] + calArr[k + 1];
                 calArr.splice(k - 1, 1);
                 calArr.splice(k, 1);
-                k = -1;
+                k -= 2;
             } else {
                 calArr[k] = calArr[k - 1] - calArr[k + 1];
                 calArr.splice(k - 1, 1);
                 calArr.splice(k, 1);
-                k = -1;
+                k -= 2;
             }
         }
     }
