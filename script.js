@@ -19,8 +19,8 @@ function backspace () {
 };
 
 function holdValue (button) {
-     calArr.push(parseFloat(calValue));
-     calArr.push(button.value);
+    calArr.push(parseFloat(calValue));
+    calArr.push(button.value);
     calValue = "";
     document.getElementById("display").innerHTML = calValue;
 };
@@ -34,17 +34,15 @@ function runOperate () {
 };
 
 function calculator(calArr) {
-    for (let i = 0; i < calArr.length; i++) {
+    for (let i = 1; i < calArr.length; i+=2) {
         if (calArr[i] === "multiply" || calArr[i] === "divide") {
             if (calArr[i] === "multiply") {
-                calArr[i] = multiply(calArr[i - 1], calArr[i + 1]);
+                calArr[i] = calArr[i - 1] * calArr[i + 1];
                 calArr.splice(i - 1, 1);
                 calArr.splice(i, 1);
                 i = -1;
-            }
-
-            if (calArr[i] === "divide") {
-                calArr[i] = divide(calArr[i - 1], calArr[i + 1]);
+            } else {
+                calArr[i] = calArr[i - 1] / calArr[i + 1];
                 calArr.splice(i - 1, 1);
                 calArr.splice(i, 1);
                 i = -1;
@@ -55,36 +53,18 @@ function calculator(calArr) {
     for (let k = 0; k < calArr.length; k++) {
         if (calArr[k] === "sum" || calArr[k] === "subtract") {
             if (calArr[k] === "sum") {
-                calArr[k] = sum(calArr[k - 1], calArr[k + 1]);
+                calArr[k] = calArr[k - 1] + calArr[k + 1];
                 calArr.splice(k - 1, 1);
                 calArr.splice(k, 1);
                 k = -1;
-            }
-
-            if (calArr[k] === "subtract") {
-                calArr[k] = subtract(calArr[k - 1], calArr[k + 1]);
+            } else {
+                calArr[k] = calArr[k - 1] - calArr[k + 1];
                 calArr.splice(k - 1, 1);
                 calArr.splice(k, 1);
                 k = -1;
             }
         }
     }
-};
-
-function sum(first, second) {
-    return first + second
-};
-
-function subtract(first, second) {
-    return first - second
-};
-
-function multiply(first, second) {
-    return first * second
-};
-
-function divide(first, second) {
-    return first / second
 };
 
 function deciAdd(button){
