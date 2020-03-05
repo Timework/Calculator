@@ -1,27 +1,27 @@
 let calValue = "";
 let calArr = [];
 
-function numberAdd (button) {
+function numberAdd(button) {
     var x = button.value;
     document.getElementById("display").innerHTML += x;
     calValue += x;
 };
 
-function numberClear () {
+function numberClear() {
     document.getElementById("display").innerHTML = "";
     calValue = "";
     calArr = [];
 };
 
-function backspace () {
+function backspace() {
     calValue = calValue.substring(0, calValue.length - 1);
     document.getElementById("display").innerHTML = calValue;
 };
 
-function holdValue (button) {
+function holdValue(button) {
     if (calValue.length === 0 && calArr.length === 0) {
         calValue = "0";
-    } else if (calValue.length === 0){
+    } else if (calValue.length === 0) {
         calArr.pop();
         return calArr.push(button.value);
     }
@@ -31,7 +31,7 @@ function holdValue (button) {
     document.getElementById("display").innerHTML = calValue;
 };
 
-function runOperate () {
+function runOperate() {
     calArr.push(parseFloat(calValue));
     calculator(calArr);
     calValue = calArr;
@@ -40,7 +40,7 @@ function runOperate () {
 };
 
 function calculator(calArr) {
-    for (let i = 1; i < calArr.length; i+=2) {
+    for (let i = 1; i < calArr.length; i += 2) {
         if (calArr[i] === "multiply" || calArr[i] === "divide") {
             if (calArr[i] === "multiply") {
                 calArr[i] = calArr[i - 1] * calArr[i + 1];
@@ -56,7 +56,7 @@ function calculator(calArr) {
         }
     }
 
-    for (let k = 1; k < calArr.length; k+=2) {
+    for (let k = 1; k < calArr.length; k += 2) {
         if (calArr[k] === "sum" || calArr[k] === "subtract") {
             if (calArr[k] === "sum") {
                 calArr[k] = calArr[k - 1] + calArr[k + 1];
@@ -73,7 +73,7 @@ function calculator(calArr) {
     }
 };
 
-function deciAdd(button){
+function deciAdd(button) {
     if (document.getElementById("display").innerHTML.indexOf(".") != -1) {
         return
     } else {
@@ -83,16 +83,16 @@ function deciAdd(button){
     }
 };
 
-function keyAdd (num){
+function keyAdd(num) {
     document.getElementById("display").innerHTML += num;
     calValue += num;
 };
 
-document.addEventListener("keydown", function(event){
-    if(event.keyCode > 47 && event.keyCode < 58){
+document.addEventListener("keydown", function (event) {
+    if (event.keyCode > 47 && event.keyCode < 58) {
         return keyAdd(event.keyCode - 48)
     }
-    if(event.keyCode === 190){
+    if (event.keyCode === 190) {
         return deciAdd(deci);
     }
     if (event.keyCode === 8) {
@@ -101,7 +101,7 @@ document.addEventListener("keydown", function(event){
     if (event.keyCode === 9) {
         return numberClear();
     }
-    if (event.keyCode === 16){
-         return runOperate();
+    if (event.keyCode === 16) {
+        return runOperate();
     }
 });
