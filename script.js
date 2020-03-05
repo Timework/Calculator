@@ -19,6 +19,12 @@ function backspace () {
 };
 
 function holdValue (button) {
+    if (calValue.length === 0 && calArr.length === 0) {
+        calValue = "0";
+    } else if (calValue.length === 0){
+        calArr.pop();
+        return calArr.push(button.value);
+    }
     calArr.push(parseFloat(calValue));
     calArr.push(button.value);
     calValue = "";
