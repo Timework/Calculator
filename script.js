@@ -1,5 +1,5 @@
-var calValue = "";
-var calArr = [];
+let calValue = "";
+let calArr = [];
 
 function numberAdd (button) {
     var x = button.value;
@@ -46,17 +46,17 @@ function calculator(calArr) {
                 calArr[i] = calArr[i - 1] * calArr[i + 1];
                 calArr.splice(i - 1, 1);
                 calArr.splice(i, 1);
-                i = -1;
+                i = -1
             } else {
                 calArr[i] = calArr[i - 1] / calArr[i + 1];
                 calArr.splice(i - 1, 1);
                 calArr.splice(i, 1);
-                i = -1;
+                i = -1
             }
         }
     }
 
-    for (let k = 0; k < calArr.length; k++) {
+    for (let k = 1; k < calArr.length; k+=2) {
         if (calArr[k] === "sum" || calArr[k] === "subtract") {
             if (calArr[k] === "sum") {
                 calArr[k] = calArr[k - 1] + calArr[k + 1];
@@ -90,7 +90,7 @@ function keyAdd (num){
 
 document.addEventListener("keydown", function(event){
     if(event.keyCode > 47 && event.keyCode < 58){
-        return keyAdd(parseInt(event.keyCode) - 48)
+        return keyAdd(event.keyCode - 48)
     }
     if(event.keyCode === 190){
         return deciAdd(deci);
