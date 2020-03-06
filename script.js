@@ -2,9 +2,16 @@ let calValue = "";
 let calArr = [];
 
 function numberAdd(button) {
-    var x = button.value;
-    document.getElementById("display").innerHTML += x;
-    calValue += x;
+    if (button.value === "-" && calValue.length === 0) {
+        var x = button.value;
+        document.getElementById("display").innerHTML += x;
+        calValue += x;
+    }
+    if (button.value != "-") {
+        var x = button.value;
+        document.getElementById("display").innerHTML += x;
+        calValue += x;
+    }
 };
 
 function numberClear() {
