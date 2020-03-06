@@ -101,6 +101,7 @@ function calculator(calArr) {
             }
         }
     }
+    calArr[0] = (Math.round(calArr[0] * 10000) / 10000).toFixed(4)
 };
 
 function deciAdd(button) {
