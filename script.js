@@ -66,6 +66,8 @@ function runOperate(){
     calValue = calArr;
     calDisplay += "=" + calValue;
     document.getElementById("calDisplay").innerHTML = calDisplay;
+    historyMove();
+    document.getElementById("historyd1").innerHTML = calDisplay;
     calArr = [];
     document.getElementById("display").innerHTML = calValue;
     calDisplay = calValue;
@@ -138,3 +140,10 @@ document.addEventListener("keydown", function (event) {
         return runOperate();
     }
 });
+function historyMove(){
+    for (let i = 9; i > 0; i--){
+        if (document.getElementById(`historyd${i}`).innerHTML != ""){
+            document.getElementById(`historyd${i + 1}`).innerHTML = document.getElementById(`historyd${i}`).innerHTML
+        }
+    }
+}

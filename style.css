@@ -21,7 +21,7 @@
 #calDisplay{
     grid-area: calDisplay;
 }
-#display, #calDisplay{
+#display, #calDisplay, .history{
     border-style: solid;
     border-color: black;
     text-align: right;
@@ -92,7 +92,7 @@
     grid-area: clear;
 }
 #setting{
-    width: 300px;
+    width: 100%;
     text-align: center;
     margin: 150px auto;
 }
@@ -109,4 +109,14 @@ button{
 }
 #instructions{
     color: white;
+}
+#historyDisplays{
+    width: 335px;
+    height: 550px;
+    float: right;
+    right: 50px
+}
+.history{
+    height: 50px;
+    width: 335px;
 }
