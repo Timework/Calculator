@@ -3,14 +3,14 @@ let calArr = [];
 let calDisplay = "";
 
 function numberAdd(button) {
-    if (button.value === "("){
+    if (button.value === "(") {
         var x = button.value;
         calDisplay += x;
         document.getElementById("display").innerHTML = calValue;
         document.getElementById("calDisplay").innerHTML = calDisplay;
         calArr.push(x)
         return
-    } 
+    }
     if (button.value === "-" && calValue.length === 0) {
         var x = button.value;
         calValue += x;
@@ -25,7 +25,7 @@ function numberAdd(button) {
         document.getElementById("display").innerHTML = calValue;
         document.getElementById("calDisplay").innerHTML = calDisplay;
     }
-    while (calValue.charAt(0) === "0"){
+    while (calValue.charAt(0) === "0") {
         calValue = calValue.substring(1);
         calDisplay = calDisplay.substring(0, calDisplay.length - 1);
         document.getElementById("display").innerHTML = calValue;
@@ -53,7 +53,7 @@ function holdValue(button) {
     if (calValue.indexOf(")") != -1) {
         let f = countp(calValue);
         calArr.push(parseFloat(calValue.substring(0, calValue.length - f)))
-        for (let o = 0; o < f; o++){
+        for (let o = 0; o < f; o++) {
             calArr.push(")");
         }
     } else {
@@ -75,11 +75,11 @@ function holdValue(button) {
     document.getElementById("calDisplay").innerHTML = calDisplay;
 };
 
-function runOperate(){
+function runOperate() {
     if (calValue === "-") {
         return
     }
-    if (calValue.indexOf(")") != -1){
+    if (calValue.indexOf(")") != -1) {
         let f = countp(calValue);
         calArr.push(parseFloat(calValue.substring(0, calValue.length - f)))
         for (let o = 0; o < f; o++) {
@@ -101,12 +101,12 @@ function runOperate(){
 };
 
 function calculator(x) {
-    for (let h = 0; h < x.length; h++){
-        if (x[h] === "("){
+    for (let h = 0; h < x.length; h++) {
+        if (x[h] === "(") {
             x.splice(h, 1);
             let g = looking(x.slice(h));
             x.splice(h + g, 1);
-            let newValue = parseFloat(calculator(x.slice(h, h+g)))
+            let newValue = parseFloat(calculator(x.slice(h, h + g)))
             x.splice(h, g, newValue);
         }
     }
@@ -176,32 +176,32 @@ document.addEventListener("keydown", function (event) {
         return runOperate();
     }
 });
-function historyMove(){
-    for (let i = 9; i > 0; i--){
-        if (document.getElementById(`historyd${i}`).innerHTML != ""){
+function historyMove() {
+    for (let i = 9; i > 0; i--) {
+        if (document.getElementById(`historyd${i}`).innerHTML != "") {
             document.getElementById(`historyd${i + 1}`).innerHTML = document.getElementById(`historyd${i}`).innerHTML
         }
     }
 }
-function looking(x){
+function looking(x) {
     let finder = 1;
-    for (let i = 0; i < x.length; i++){
-        if (x[i] === "("){
+    for (let i = 0; i < x.length; i++) {
+        if (x[i] === "(") {
             finder += 1;
         }
-        if (x[i] === ")"){
+        if (x[i] === ")") {
             finder -= 1;
-        }  
-        if (finder === 0){
+        }
+        if (finder === 0) {
             return i
         }
     }
 }
-function countp(x){
+function countp(x) {
     let counter = 0;
     xsplit = x.split("");
-    for (let i = 0; i < xsplit.length; i++){
-        if (xsplit[i] === ")"){
+    for (let i = 0; i < xsplit.length; i++) {
+        if (xsplit[i] === ")") {
             counter += 1
         }
     }
