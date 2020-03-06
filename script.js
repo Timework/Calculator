@@ -64,9 +64,11 @@ function runOperate(){
     calArr.push(parseFloat(calValue));
     calculator(calArr);
     calValue = calArr;
+    calDisplay += "=" + calValue;
+    document.getElementById("calDisplay").innerHTML = calDisplay;
     calArr = [];
     document.getElementById("display").innerHTML = calValue;
-    calDisplay = "";
+    calDisplay = calValue;
 };
 
 function calculator(calArr) {
