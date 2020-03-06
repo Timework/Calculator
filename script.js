@@ -1,16 +1,25 @@
 let calValue = "";
 let calArr = [];
+let calDisplay = "";
 
 function numberAdd(button) {
     if (button.value === "-" && calValue.length === 0) {
         var x = button.value;
-        document.getElementById("display").innerHTML += x;
         calValue += x;
+        calDisplay += x;
+        document.getElementById("display").innerHTML = calValue;
+        document.getElementById("calDisplay").innerHTML = calDisplay;
     }
     if (button.value != "-") {
         var x = button.value;
-        document.getElementById("display").innerHTML += x;
         calValue += x;
+        calDisplay += x;
+        document.getElementById("display").innerHTML = calValue;
+        document.getElementById("calDisplay").innerHTML = calDisplay;
+    }
+    while (calValue.charAt(0) === "0"){
+        calValue = calValue.substring(1);
+        document.getElementById("display").innerHTML = calValue;
     }
 };
 
@@ -18,38 +27,52 @@ function numberClear() {
     document.getElementById("display").innerHTML = "";
     calValue = "";
     calArr = [];
+    calDisplay = "";
+    document.getElementById("calDisplay").innerHTML = calArr;
+    document.getElementById("calDisplay").innerHTML = calDisplay;
 };
 
 function backspace() {
     calValue = calValue.substring(0, calValue.length - 1);
+    calDisplay = calDisplay.substring(0, calDisplay - 1);
     document.getElementById("display").innerHTML = calValue;
+    document.getElementById("calDisplay").innerHTML = calDisplay;
 };
 
 function holdValue(button) {
     if (calValue.length === 0 && calArr.length === 0) {
         calValue = "0";
+        calDisplay += 0;
     } else if (calValue.length === 0) {
         calArr.pop();
+        calDisplay.substring(0, calDisplay.length - 1);
+        document.getElementById("calDisplay").innerHTML = calDisplay;
         return calArr.push(button.value);
     }
     calArr.push(parseFloat(calValue));
     calArr.push(button.value);
+    calDisplay += button.value;
     calValue = "";
     document.getElementById("display").innerHTML = calValue;
+    document.getElementById("calDisplay").innerHTML = calDisplay;
 };
 
-function runOperate() {
+function runOperate(){
+    if (calValue === "-"){
+        return
+    }
     calArr.push(parseFloat(calValue));
     calculator(calArr);
     calValue = calArr;
     calArr = [];
     document.getElementById("display").innerHTML = calValue;
+    calDisplay = "";
 };
 
 function calculator(calArr) {
     for (let i = 1; i < calArr.length; i += 2) {
-        if (calArr[i] === "multiply" || calArr[i] === "divide") {
-            if (calArr[i] === "multiply") {
+        if (calArr[i] === "*" || calArr[i] === "/") {
+            if (calArr[i] === "*") {
                 calArr[i] = calArr[i - 1] * calArr[i + 1];
                 calArr.splice(i - 1, 1);
                 calArr.splice(i, 1);
@@ -64,8 +87,8 @@ function calculator(calArr) {
     }
 
     for (let k = 1; k < calArr.length; k += 2) {
-        if (calArr[k] === "sum" || calArr[k] === "subtract") {
-            if (calArr[k] === "sum") {
+        if (calArr[k] === "+" || calArr[k] === "-") {
+            if (calArr[k] === "+") {
                 calArr[k] = calArr[k - 1] + calArr[k + 1];
                 calArr.splice(k - 1, 1);
                 calArr.splice(k, 1);
